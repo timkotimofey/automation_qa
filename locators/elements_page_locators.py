@@ -23,6 +23,7 @@ class CheckBoxPageLocators:
     TITLE_ITEM = ".//ancestor::span[@class='rct-text']"
     OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
 
+
 class RadioButtonPageLocators:
     YES_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="yesRadio"]')
     IMPRESSIVE_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="impressiveRadio"]')
@@ -30,5 +31,12 @@ class RadioButtonPageLocators:
     OUTPUT_RESULT = (By.CSS_SELECTOR, "p span[class='text-success']")
 
 
-
-
+class WebTablePageLocators:
+    ADD_BUTTON = (By.CSS_SELECTOR, "button[id='addNewRecordButton']")
+    FIRSTNAME_INPUT = (By.CSS_SELECTOR, "input[id='firstName']")
+    LASTNAME_INPUT = (By.CSS_SELECTOR, "input[id='lastName']")
+    EMAIL_INPUT = (By.CSS_SELECTOR, "input[id='userEmail']")
+    AGE_INPUT = (By.CSS_SELECTOR, "input[id='age']")
+    SALARY_INPUT = (By.CSS_SELECTOR, "input[id='salary']")
+    DEPARTMENT_INPUT = (By.CSS_SELECTOR, "input[id='department']")
+    SUBMIT = (By.CSS_SELECTOR, "button[id='submit']")
