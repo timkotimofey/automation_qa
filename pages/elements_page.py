@@ -105,4 +105,14 @@ class WebTablePage(BasePage):
             # and finish I send the form by the push "submit"
             self.element_is_visible(self.locators.SUBMIT).click()
             count -= 1
-            return firstname, lastname, email, age, salary, department
+            return [firstname, lastname, str(age), email,  str(salary), department]
+
+    def check_new_added_person(self):                # function that checks the correctness of the addition
+        people_list = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
+        data = []
+        for item in people_list:
+            data.append(item.text.splitlines())
+        return data
+
+
+
