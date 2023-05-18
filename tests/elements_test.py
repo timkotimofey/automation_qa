@@ -2,7 +2,7 @@ import random
 import time
 
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
-    UploadAndDownloadPage
+    UploadAndDownloadPage, DynamicPropertiesPage
 
 
 class TestElements:
@@ -12,10 +12,10 @@ class TestElements:
             text_box_page.open()
             full_name, email, current_address, permanent_address = text_box_page.fill_all_fields()
             output_name, output_email, output_cur_addr, output_per_addr = text_box_page.check_filled_form()
-            assert full_name == output_name, "The full name does not match"
-            assert email == output_email, "The email does not match"
-            assert current_address == output_cur_addr, "The current address does not match"
-            assert permanent_address == output_per_addr, "The permanent address does not match"
+            assert full_name == output_name, "The full name does not match"                     # after "," negative message
+            assert email == output_email, "The email does not match"                            # after "," negative message
+            assert current_address == output_cur_addr, "The current address does not match"     # after "," negative message
+            assert permanent_address == output_per_addr, "The permanent address does not match" # after "," negative message
 
     class TestCheckbox:
         def test_check_box(self, driver):
@@ -124,14 +124,31 @@ class TestElements:
             file_name, result = upload_download_page.upload_file()
             assert file_name == result, "the file has not been uploaded"
 
-
-
         def test_download_file(self, driver):
             upload_download_page = UploadAndDownloadPage(driver, 'https://demoqa.com/upload-download')
             upload_download_page.open()
             check = upload_download_page.download_file()
             assert check is True, "the file has not been downloaded"
 
+    class TestDynamicPropertiesPage:
+
+        def test_dynamic_properties(self, driver):
+            dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
+            dynamic_properties_page.open()
+            color_before, color_after = dynamic_properties_page.check_changed_of_color()
+            assert color_after != color_before, 'colors have not been changed'
+
+        def test_appear_button(self, driver):
+            dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
+            dynamic_properties_page.open()
+            appear = dynamic_properties_page.check_appear_of_button()
+            assert appear is True, 'button did not appear after 5 second'
+
+        def test_enable_button(self, driver):
+            dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
+            dynamic_properties_page.open()
+            enable = dynamic_properties_page.check_enable_button()
+            assert enable is True, 'button did not enable after 5 second'
 
 
 
