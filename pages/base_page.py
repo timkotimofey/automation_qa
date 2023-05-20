@@ -42,6 +42,10 @@ class BasePage:  # This is parent (basic) class. Other classes were inherit from
         action.context_click(element)             # .context_click = right click
         action.perform()
 
+    def remove_footer(self):
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+        self.driver.execute_script("document.getElementById('fixedban').style.display='none';")
+
 
 
 
