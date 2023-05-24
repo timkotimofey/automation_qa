@@ -1,5 +1,5 @@
 import random
-from data.data import Person
+from data.data import Person, Color
 from faker import Faker
 
 faker_ru = Faker('ru_RU')
@@ -47,3 +47,9 @@ def generated_subject():
                     14: "Civics"
                     }
     return subject_dict[random.randint(1, 14)]
+
+
+def generated_color():
+    yield Color(
+        color_name=["Red", "Blue", "Green", "Yellow", "Purple", "Black", "White", "Voilet", "Indigo", "Magenta", "Aqua"]
+    )
