@@ -1,6 +1,6 @@
 import time
 
-from pages.widgets_page import AccordianPage, AutoCompletePage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage
 
 
 class TestWidgets:
@@ -39,9 +39,9 @@ class TestWidgets:
             time.sleep(3)
             before_list, after_list = autocomplete_page.remove_all_values()
             time.sleep(3)
-            assert after_list =='', 'All values were not deleted'
+            assert after_list == '', 'All values were not deleted'
 
-        def test_fill_single_autocomplete(self,driver):
+        def test_fill_single_autocomplete(self, driver):
             autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
             autocomplete_page.open()
             color = autocomplete_page.fill_input_single()
@@ -51,5 +51,17 @@ class TestWidgets:
             assert color == color_result, 'The added colors are missing in the input'
 
 
+class TestDatePickerPage:
+    def test_change_date(self, driver):
+        date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
+        date_picker_page.open()
+        value_date_before, value_date_after = date_picker_page.select_date()
+        assert value_date_before != value_date_after, 'The date has not been changed'
 
-
+    def test_change_date_and_time(self, driver):
+        date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
+        date_picker_page.open()
+        value_date_before, value_date_after = date_picker_page.select_date_and_time()
+        # print(value_date_before)
+        # print(value_date_after)
+        assert value_date_before != value_date_after, 'The date and time have not been changed'
