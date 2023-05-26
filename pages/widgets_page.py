@@ -6,7 +6,7 @@ from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date
 from locators.widgets_page_locators import AccordianPageLocators, AutoCompletePageLocators, DataPickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators
+    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators
 from pages.base_page import BasePage
 
 
@@ -157,4 +157,47 @@ class ProgressBarPage(BasePage):
         time.sleep(random.randint(2, 5))
         progress_bar_button.click()
         value_after = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        print(value_before)
+        print(value_after)
         return value_before, value_after
+
+    def reset_progress_bar_value(self):
+        value_before = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        progress_bar_button = self.element_is_clickable(self.locators.PROGRESS_BAR_BUTTON)
+        progress_bar_button.click()
+        while self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text != '99%':
+            self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        value_after = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        progress_bar_button_reset = self.element_is_clickable(self.locators.PROGRESS_BAR_RESET_BUTTON)
+        progress_bar_button_reset.click()
+        value_reset = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        # print(value_before)
+        # print(value_after)
+        # print(value_reset)
+        return value_before, value_after, value_reset
+
+
+class TabsPage(BasePage):
+    locators = TabsPageLocators()
+
+    def check_tabs(self, name_tab):
+        tabs = {'what':
+                    {'title': self.locators.TABS_WHAT,
+                     'content': self.locators.TABS_WHAT_CONTENT},
+                'origin':
+                    {'title': self.locators.TABS_ORIGIN,
+                     'content': self.locators.TABS_ORIGIN_CONTENT},
+                'use':
+                    {'title': self.locators.TABS_USE,
+                     'content': self.locators.TABS_USE_CONTENT},
+                'more':
+                    {'title': self.locators.TABS_MORE,
+                     'content': self.locators.TABS_MORE_CONTENT}
+                }
+
+        button = self.element_is_visible(tabs[name_tab]['title'])
+        button.click()
+        what_content = self.element_is_visible(tabs[name_tab]['content']).text
+        return button.text, len(what_content)
+
+
