@@ -33,19 +33,21 @@ class BasePage:  # This is parent (basic) class. Other classes were inherit from
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
     def action_double_click(self, element):
-        action = ActionChains(self.driver)        # -ActionChains- library for any actions with mouse(scroll, double click, drag)
+        action = ActionChains(
+            self.driver)  # -ActionChains- library for any actions with mouse(scroll, double click, drag)
         action.double_click(element)
-        action.perform()                          # .perform - for to do all  actions
+        action.perform()  # .perform - for to do all  actions
 
     def action_right_click(self, element):
         action = ActionChains(self.driver)
-        action.context_click(element)             # .context_click = right click
+        action.context_click(element)  # .context_click = right click
+        action.perform()
+
+    def action_drag_and_drop_by_offset(self, element, x_coords, y_coords):
+        action = ActionChains(self.driver)
+        action.drag_and_drop_by_offset(element, x_coords, y_coords)
         action.perform()
 
     def remove_footer(self):
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
         self.driver.execute_script("document.getElementById('fixedban').style.display='none';")
-
-
-
-
