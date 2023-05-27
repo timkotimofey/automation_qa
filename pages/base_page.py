@@ -48,6 +48,11 @@ class BasePage:  # This is parent (basic) class. Other classes were inherit from
         action.drag_and_drop_by_offset(element, x_coords, y_coords)
         action.perform()
 
+    def action_move_to_element(self, element):   # Moving the mouse to the middle of a element, without click
+        action = ActionChains(self.driver)
+        action.move_to_element(element)
+        action.perform()
+
     def remove_footer(self):
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
         self.driver.execute_script("document.getElementById('fixedban').style.display='none';")
