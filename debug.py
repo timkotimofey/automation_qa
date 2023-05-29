@@ -1,5 +1,5 @@
 
-
+# setTimeout(function(){debugger;}, 5000)     - command for console for freeze elemnts
 # ------------------------------------------
 # data1 = ['Desktop', 'Notes', 'Commands', 'React', 'Office', 'Public', 'Private', 'Classified', 'General', 'Downloads', 'Word File.doc', 'Excel File.doc']
 #

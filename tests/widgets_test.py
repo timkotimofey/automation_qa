@@ -1,7 +1,7 @@
 import time
 
 from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
-    ToolTipsPage, MenuPage
+    ToolTipsPage, MenuPage, SelectValuePage
 
 
 class TestWidgets:
@@ -126,5 +126,35 @@ class TestMenuPage:
         menu_page = MenuPage(driver, 'https://demoqa.com/menu')
         menu_page.open()
         data = menu_page.check_menu()
-        assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1', 'Sub Sub Item 2', 'Main Item 3'], " menu items do not exist or have not been select"
+        assert data == ['Main Item 1', 'Main Item 2', 'Sub Item', 'Sub Item', 'SUB SUB LIST »', 'Sub Sub Item 1',
+                        'Sub Sub Item 2', 'Main Item 3'], " menu items do not exist or have not been select"
+
+
+class TestSelectMenu:
+
+    def test_select_value(self, driver):
+        select_value = SelectValuePage(driver, 'https://demoqa.com/select-menu')
+        select_value.open()
+        data, item_text = select_value.check_select('select_value')
+        print(data)
+        print(item_text)
+        assert item_text in data, 'the item has not been selected'
+
+    def test_select_one(self, driver):
+        select_value = SelectValuePage(driver, 'https://demoqa.com/select-menu')
+        select_value.open()
+        data, item_text = select_value.check_select('select_one')
+        print(data)
+        print(item_text)
+        assert item_text in data, 'the item has not been selected'
+
+
+    def test_select_old(self, driver):
+        select_value = SelectValuePage(driver, 'https://demoqa.com/select-menu')
+        select_value.open()
+        data, item_text = select_value.check_select_old()
+        print(data)
+        print(item_text)
+        assert item_text in data, 'the item has not been selected'
+
 

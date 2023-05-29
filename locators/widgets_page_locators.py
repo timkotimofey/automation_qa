@@ -74,5 +74,18 @@ class ToolTipsPageLocators:
 
     TOOL_TIPS_INNERS = (By.CSS_SELECTOR, "div[class='tooltip-inner']")
 
+
 class MenuPageLocators:
     MENU_ITEM_LIST = (By.CSS_SELECTOR, "ul[id='nav'] li a")
+
+
+class SelectValuePageLocators:
+    FILED_SELECT_VALUE = (By.CSS_SELECTOR, "div[id='withOptGroup']")
+    ITEMS_OF_SELECT_VALUE = (By.CSS_SELECTOR, "[tabindex^='-']")
+
+    FILED_SELECT_ONE = (By.CSS_SELECTOR, "div[id='selectOne']")
+    ITEMS_OF_SELECT_ONE = (By.CSS_SELECTOR, "div[id^='react-select-3-option']")
+
+    FILED_SELECT_OLD_STYLE = (By.CSS_SELECTOR, "select[id='oldSelectMenu']")
+    ITEMS_OF_SELECT_OLD_STYLE = (By.CSS_SELECTOR, "select[id='oldSelectMenu'] option")
+

@@ -6,7 +6,8 @@ from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_color, generated_date
 from locators.widgets_page_locators import AccordianPageLocators, AutoCompletePageLocators, DataPickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators, MenuPageLocators
+    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators, MenuPageLocators, \
+    SelectValuePageLocators
 from pages.base_page import BasePage
 
 
@@ -235,7 +236,48 @@ class MenuPage(BasePage):
         return data
 
 
+class SelectValuePage(BasePage):
+    locators = SelectValuePageLocators()
 
+    def check_select(self, name_select):
+        tabs = {'select_value':
+                    {'input': self.locators.FILED_SELECT_VALUE,
+                     'items': self.locators.ITEMS_OF_SELECT_VALUE},
+                'select_one':
+                    {'input': self.locators.FILED_SELECT_ONE,
+                     'items': self.locators.ITEMS_OF_SELECT_ONE}
+                }
+        input_area = self.element_is_present(tabs[name_select]['input'])
+        input_area.click()
+        items_list = self.elements_are_present(tabs[name_select]['items'])
+        data = []
+        count = 0
+        for item in items_list:
+            self.action_move_to_element(item)
+            data.append(item.text)
+            count += 1
+        select_item = items_list[random.randint(0, count)]
+        item_text = select_item.text
+        select_item.click()
 
+        return data, item_text
+
+    def check_select_old(self):
+        input_area = self.element_is_present(self.locators.FILED_SELECT_OLD_STYLE)
+        input_area.click()
+        items_list = self.elements_are_present(self.locators.ITEMS_OF_SELECT_OLD_STYLE)
+        data = []
+        count = 0
+        for item in items_list:
+            print(item.text)
+            self.go_to_element(item)
+            data.append(item.text)
+            count += 1
+        select_item = items_list[random.randint(0, count)]
+        item_text = select_item.text
+        select_item.click()
+        input_area.click()
+        time.sleep(5)
+        return data, item_text
 
 
