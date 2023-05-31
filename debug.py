@@ -1,4 +1,3 @@
-
 # setTimeout(function(){debugger;}, 5000)     - command for console for freeze elemnts
 # ------------------------------------------
 # data1 = ['Desktop', 'Notes', 'Commands', 'React', 'Office', 'Public', 'Private', 'Classified', 'General', 'Downloads', 'Word File.doc', 'Excel File.doc']
@@ -35,7 +34,7 @@
 # Faker.seed()
 # for _ in range(5):
 #     print(faker_ru.date())
-#----------------------------------------------
+# ----------------------------------------------
 
 # subject_dict = {1: "Hindi",
 #            2: "English",
@@ -56,7 +55,16 @@
 # print(subject_dict[5])
 
 
-#---------------------------------------------
+# ---------------------------------------------
 
-a = '05'
-print(a)
+data = ('width: 500px; height: 300px;')
+
+
+def get_px_from_width_height(value_of_size):
+    width = value_of_size.split(';')[0].split(':')[1].replace(' ', '')
+    height = value_of_size.split(';')[1].split(':')[1].replace(' ', '')
+    print(width)
+    print(height)
+
+
+get_px_from_width_height(data)
