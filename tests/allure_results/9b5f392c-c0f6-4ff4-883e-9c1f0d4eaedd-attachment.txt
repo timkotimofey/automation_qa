@@ -1,0 +1,2 @@
+Person(full_name='Автоном Дроздов Владиленович', firstname='Владимир', lastname='Гордеева', date_of_birth='1994-01-14', age=67, salary=39848, department='Инженер-механик', email='frol_1993@example.org', current_address='г. Верхний Баскунчак, наб. Путевая, д. 42, 286399', permanent_address='к. Бронницы, пер. Чехова, д. 2 к. 924, 623002', mobile='1768843848619')
+['Владимир Гордеева', 'frol_1993@example.org', 'Other', '1768843848', '03 June,202319', 'Chemistry', 'Reading', 'filetest719.txt', 'г. Верхний Баскунчак, наб. Путевая, д. 42, 286399', 'Rajasthan Jaipur']

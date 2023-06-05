@@ -1,0 +1,13 @@
+Red
+Blue
+Green
+Yellow
+Purple
+Black
+White
+Voilet
+Indigo
+Magenta
+Aqua
+['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Black', 'White', 'Voilet', 'Indigo', 'Magenta', 'Aqua']
+Yellow

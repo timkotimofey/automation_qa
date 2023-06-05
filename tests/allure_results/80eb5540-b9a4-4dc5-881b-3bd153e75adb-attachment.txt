@@ -1,0 +1,2 @@
+Person(full_name='Климент Кириллов Наумовна', firstname='Лидия', lastname='Колесников', date_of_birth='1981-08-30', age=72, salary=28804, department='Аналитик', email='gorshkovavalerija@example.net', current_address='ст. Красноуфимск, алл. Коммуны, д. 64 к. 78, 244999', permanent_address='п. Шерегеш, наб. Чайкиной, д. 93 стр. 59, 975384', mobile='9025674137461')
+['Лидия Колесников', 'gorshkovavalerija@example.net', 'Female', '9025674137', '03 June,202319', 'History', 'Reading', 'filetest814.txt', 'ст. Красноуфимск, алл. Коммуны, д. 64 к. 78, 244999', 'Rajasthan Jaipur']
